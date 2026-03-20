@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Posts Index
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center mt-4">Posts</h1>
+<a href="{% url 'new_post' %}" class="btn btn-primary mb-3">Create New Post</a>
+
+<div class=' container row gap-3'>
+  {%for post in posts%}
+    <div class="card" style="width: 18rem;">
+      <img src="{{ post.photo.url }}" class="card-img-top" alt="no image?">
+      <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <p class="card-text">{{post.content}}</p>
+        {% if post.author == user %}
+          <a href="{% url 'edit_post' post.id %}" class="btn btn-primary">Edit post</a>
+          <a href="{% url 'delete_post' post.id %}" class="btn btn-danger">Delete post</a>
+        {% endif %}
+        
+      </div>
+    </div>
+  {% endfor %}
+</div>
+    
+{% endblock %}
