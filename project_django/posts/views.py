@@ -5,8 +5,16 @@ from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from django.db.models import Q
+from django.contrib.auth.models import User
 
 # Create your views here.
+
+def user_profile(request, username):
+    user = get_object_or_404(User, username=username)
+    posts = Post.objects.filter(author=user).order_by('-created_at')
+    comments = Comments.objects.filter(author=user).order_by('-created_at')
+    return render(request, 'profile.html', {'profile_user': user, 'posts': posts, 'comments': comments})
+
 
 def home(request):   
     q=request.GET.get('q') 
@@ -14,8 +22,10 @@ def home(request):
         posts = Post.objects.filter(Q(title__icontains=q) | Q(content__icontains=q))
     else:
         posts = Post.objects.all().order_by('-created_at')    #read data
+
+    comments = Comments.objects.all().order_by('-created_at')
     
-    return render(request, 'home.html', {'posts': posts,'q': q})
+    return render(request, 'home.html', {'posts': posts,'q': q, 'comments': comments})
 
 @login_required
 def new_post(request):         #CREATE DATA
@@ -50,7 +60,7 @@ def delete_post(request, post_id):
     post=get_object_or_404(Post, pk=post_id, author=request.user)
     if request.method=='POST':
         post.delete()
-        return redirect('al')
+        return redirect('home')
     return render(request, 'delete_post.html', {'post': post})
 
 
@@ -79,6 +89,8 @@ def delete_comment(request, comment_id):
         comment.delete()
         return redirect('post', post_id=post.id)
     return redirect('post', post_id=post.id)
+
+
 
 def register(request):
     if request.method=='POST':

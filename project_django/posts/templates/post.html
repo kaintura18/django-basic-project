@@ -6,7 +6,7 @@
 
 {% block content %}
 
-  <div style="max-width: 800px; margin: 0 auto; padding: 20px;">
+  <div style="max-width: auto; margin: 0 auto; padding: 10px;">
     <div style="background: #666060; border: 1px solid #ddd; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,.05);">
       <h1 style="text-align: center; margin-bottom: 16px;">{{ post.title }}</h1>
       <p style="text-align: center; color: #666; margin-bottom: 16px;">@{{ post.author }}</p>
@@ -16,6 +16,7 @@
         {% endif %}
       </div>
       <p style="text-align: center; line-height: 1.5;">{{ post.content }}</p>
+
 
       <h3 style="margin-top: 30px;">Add Comment</h3>
       {% if user.is_authenticated %}
@@ -29,13 +30,15 @@
         <p>You must be logged in to comment.</p>
         <a href="{% url 'login' %}">Login</a> or <a href="{% url 'register' %}">Register</a>
       {% endif %}
+     
       
     <h3>Comments</h3>
+
     {% for comment in comments %}
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
         <div>
-          <strong>{{ comment.author.username }}</strong>: {{ comment.body }}
-          <small>({{ comment.created_at|timesince }} ago)</small>
+          <strong> <a href="{% url 'user_profile' comment.author.username %}">{{ comment.author.username }}</a> • {{ comment.created_at|timesince }} ago</strong>
+          <p style="margin:0.2rem 0 0.6rem 0;">{{ comment.body }}</p>
         </div>
         <div>
           {% if user == comment.author %}

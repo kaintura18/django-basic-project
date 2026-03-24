@@ -5,10 +5,30 @@
 {% endblock %}
 
 {% block content %}
+<style>
+  .home_container{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    column-gap: 10px;
+  }
+  /* .recent_activity {
+    background: #121212;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.08);
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+  } */
+  </style>
+
+<div class="home_container">
+  <div> 
 <h1 class="text-center mt-4">Posts</h1>
 <a href="{% url 'new_post' %}" class="btn btn-primary mb-3">Create New Post</a>
 
-<div class=' container row gap-3'>
+<div class='container row gap-3'>
   {%for post in posts%}
     <div class="card" style="width: 18rem;">
       {% if post.photo %}
@@ -17,7 +37,7 @@
      
       <div class="card-body">
         <h5 class="card-title">{{ post.title }}</h5>
-        <span >by @{{ post.author }}</span>
+        <span > <a href="{% url 'user_profile' post.author.username %}">@{{ post.author.username }}</a></span>
         <p class="card-text">{{post.content|truncatewords:20 }}</p>
         <a href="{% url 'post' post.id %}" class="btn btn-primary">View Post</a>
         {% if post.author == user %}
@@ -29,5 +49,20 @@
     </div>
   {% endfor %}
 </div>
-    
+</div>
+
+<div class="recent_activity">
+  <h3 class="text-center">Recent Activity</h3>
+  <hr>
+  {% for comment in comments %}
+      <div style="margin-bottom:0.8rem;">
+        <small><a href="{% url 'user_profile' comment.author.username %}">@{{ comment.author.username }}</a> • {{ comment.created_at|timesince }} ago</small>
+        <p style="margin:0.2rem 0 0.6rem 0;">{{ comment.body|truncatewords:20 }}</p>
+        </div>
+  {% empty %}
+      <p>No comments yet.</p>
+  {% endfor %}
+</div>
+
+</div> 
 {% endblock %}
