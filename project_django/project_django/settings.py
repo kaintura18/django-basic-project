@@ -125,5 +125,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_URL = '/accounts/login/'
 
-LOGIN_REDIRECT_URL = '/posts/'
-LOGOUT_REDIRECT_URL = '/posts/'
+LOGIN_REDIRECT_URL = '/'  # or '/posts/' if you keep /posts/ route
+LOGOUT_REDIRECT_URL = '/'  # or '/posts/' if you keep /posts/ route

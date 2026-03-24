@@ -1,0 +1,54 @@
+{%extends "layout.html" %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block content %}
+
+  <div style="max-width: 800px; margin: 0 auto; padding: 20px;">
+    <div style="background: #666060; border: 1px solid #ddd; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,.05);">
+      <h1 style="text-align: center; margin-bottom: 16px;">{{ post.title }}</h1>
+      <p style="text-align: center; color: #666; margin-bottom: 16px;">@{{ post.author }}</p>
+      <div style="text-align: center; margin-bottom: 16px;">
+        {% if post.photo %}
+          <img src="{{ post.photo.url }}" alt="no image?" style="max-width: 100%; max-height: 400px; object-fit: contain;" />
+        {% endif %}
+      </div>
+      <p style="text-align: center; line-height: 1.5;">{{ post.content }}</p>
+
+      <h3 style="margin-top: 30px;">Add Comment</h3>
+      {% if user.is_authenticated %}
+         <p>Commenting as {{ user.username }}</p>
+         <form method="POST">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit">Post Comment</button>
+        </form>
+      {% else %}
+        <p>You must be logged in to comment.</p>
+        <a href="{% url 'login' %}">Login</a> or <a href="{% url 'register' %}">Register</a>
+      {% endif %}
+      
+    <h3>Comments</h3>
+    {% for comment in comments %}
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <div>
+          <strong>{{ comment.author.username }}</strong>: {{ comment.body }}
+          <small>({{ comment.created_at|timesince }} ago)</small>
+        </div>
+        <div>
+          {% if user == comment.author %}
+            <form action="{% url 'delete_comment' comment.id %}" method="POST" style="margin:0;">
+              {% csrf_token %}
+              <button type="submit" style="color:red; border:none; background:none; cursor:pointer;">Delete</button>
+            </form>
+          {% endif %}
+        </div>
+      </div>
+    {% empty %}
+      <p>No comments yet.</p>
+    {% endfor %}
+
+    
+{% endblock %}
