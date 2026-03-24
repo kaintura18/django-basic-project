@@ -8,61 +8,99 @@
 <style>
   .home_container{
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 4fr 1fr;
     max-width: 1200px;
     margin: 0 auto;
     column-gap: 10px;
   }
-  /* .recent_activity {
-    background: #121212;
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.08);
-    max-height: calc(100vh - 100px);
-    overflow-y: auto;
-  } */
-  </style>
 
-<div class="home_container">
-  <div> 
-<h1 class="text-center mt-4">Posts</h1>
-<a href="{% url 'new_post' %}" class="btn btn-primary mb-3">Create New Post</a>
+  .card {
+    background-color: #1a1a1b;
+    border-radius: 16px;
+    padding: 14px;
+    margin-bottom: 18px;
+    border: 1px solid #2f3336;
+    transition: 0.2s;
+  }
 
-<div class='container row gap-3'>
-  {%for post in posts%}
-    <div class="card" style="width: 18rem;">
-      {% if post.photo %}
-       <img src="{{ post.photo.url }}" class="card-img-top" alt="no image?">
-      {% endif %}
-     
-      <div class="card-body">
-        <h5 class="card-title">{{ post.title }}</h5>
-        <span > <a href="{% url 'user_profile' post.author.username %}">@{{ post.author.username }}</a></span>
-        <p class="card-text">{{post.content|truncatewords:20 }}</p>
-        <a href="{% url 'post' post.id %}" class="btn btn-primary">View Post</a>
-        {% if post.author == user %}
-          <a href="{% url 'edit_post' post.id %}" class="btn btn-primary">Edit post</a>
-          <a href="{% url 'delete_post' post.id %}" class="btn btn-danger">Delete post</a>
-        {% endif %}
-        
-      </div>
-    </div>
-  {% endfor %}
-</div>
-</div>
+  .card:hover {
+    background-color: #26262a;
+    border-color: #2e547a;
+    box-shadow: 0 4px 12px rgba(58,59,60,0.5);
+  }
 
-<div class="recent_activity">
-  <h3 class="text-center">Recent Activity</h3>
-  <hr>
-  {% for comment in comments %}
-      <div style="margin-bottom:0.8rem;">
-        <small><a href="{% url 'user_profile' comment.author.username %}">@{{ comment.author.username }}</a> • {{ comment.created_at|timesince }} ago</small>
-        <p style="margin:0.2rem 0 0.6rem 0;">{{ comment.body|truncatewords:20 }}</p>
+  .card-img-top {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .post-card {
+    background-color: #1a1a1b;
+    border-radius: 16px;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  .post-card:hover {
+    border: 1px solid #4f9cf9;
+    box-shadow: 0 0 10px rgba(79,156,249,0.4);
+    background-color: #222324;
+    transform: translateY(-2px);
+  }
+
+</style>
+<div class="home_container mt-4">
+  <div class="posts_section"> 
+    <a href="{% url 'new_post' %}" class="btn btn-primary mb-3">Create New Post</a>
+    <div class='container row gap-3'>
+      {%for post in posts%}
+      <div class="post clickable-card"
+      onclick="window.location.href='{% url 'post' post.id %}'">
+        <div class="card" >
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <a href="{% url 'user_profile' post.author.username %}">@{{ post.author.username }}</a> 
+            <p class="card-text">{{post.content|truncatewords:20 }}</p>
+            {% if post.photo %}
+              <img src="{{ post.photo.url }}" class="card-img-top" alt="no image?"><br>
+            {% endif %}
+            {% if post.author == user %}
+              <a href="{% url 'edit_post' post.id %}" class="btn btn-primary">Edit </a>
+              <a href="{% url 'delete_post' post.id %}" class="btn btn-danger">Delete </a>
+            {% endif %}     
+          </div>
+             
         </div>
-  {% empty %}
-      <p>No comments yet.</p>
-  {% endfor %}
+      </div><hr>
+      {% endfor %}
+    </div>
+ </div> 
+<div class="recent_activity">
+      <h3 class="text-center">Recent Activity</h3><hr>
+      {% for comment in comments|slice:":5" %}
+        <div class="post-card clickable-card" {% if comment.post_exists %}onclick="window.location.href='{% url 'post' comment.post_id %}'"{% endif %}>
+          <div class="comment-meta">
+            <small><a href="{% url 'user_profile' comment.author.username %}">@{{ comment.author.username }}</a> • {{ comment.created_at|timesince }} ago
+            {% if comment.post_exists %}
+              <a href="{% url 'post' comment.post_id %}" style="margin-left: 0.5rem;">view</a>
+            {% else %}
+              <span class="text-muted" style="margin-left: 0.5rem;">deleted post</span>
+            {% endif %}
+            </small>
+            <p class="comment-body">{{ comment.body|truncatewords:20 }}</p>
+          </div>
+        </div>
+      {% empty %}
+          <p>No comments yet.</p>
+      {% endfor %}
+          
+
 </div>
 
-</div> 
+
+
 {% endblock %}

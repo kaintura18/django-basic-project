@@ -6,7 +6,7 @@
 
 {% block content %}
   <h1 class="text-center mt-4">Posts</h1>
-  <h2>
+  <h3>
     {% if form.instance.pk%}
     Edit Post
    
@@ -15,12 +15,12 @@
     {% endif%}
      <form method ='POST' enctype="multipart/form-data" class='form'>
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Submit</button>
-        
+        {{ form.title }}
+        {{ form.content }}
+        {{ form.photo }}
+        <button type="submit" class="btn btn-primary">Post</button>  
     </form>
     <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
-
-  </h2>
+  </h3>
     
 {% endblock %}

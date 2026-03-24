@@ -6,24 +6,32 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from django.db.models import Q
 from django.contrib.auth.models import User
+from django.db.models import Exists, OuterRef
 
-# Create your views here.
 
 def user_profile(request, username):
     user = get_object_or_404(User, username=username)
     posts = Post.objects.filter(author=user).order_by('-created_at')
-    comments = Comments.objects.filter(author=user).order_by('-created_at')
-    return render(request, 'profile.html', {'profile_user': user, 'posts': posts, 'comments': comments})
+    comments = Comments.objects.filter(author=user).annotate(
+        post_exists=Exists(Post.objects.filter(pk=OuterRef('post_id')))
+    ).order_by('-created_at')
+    return render(request, 'profile.html', {
+        'profile_user': user,
+        'posts': posts,
+        'comments': comments
+    })
 
 
 def home(request):   
-    q=request.GET.get('q') 
+    q=request.GET.get('q', '') 
     if q and q.strip():
         posts = Post.objects.filter(Q(title__icontains=q) | Q(content__icontains=q))
     else:
         posts = Post.objects.all().order_by('-created_at')    #read data
 
-    comments = Comments.objects.all().order_by('-created_at')
+    comments = Comments.objects.annotate(
+        post_exists=Exists(Post.objects.filter(pk=OuterRef('post_id')))
+    ).order_by('-created_at')
     
     return render(request, 'home.html', {'posts': posts,'q': q, 'comments': comments})
 

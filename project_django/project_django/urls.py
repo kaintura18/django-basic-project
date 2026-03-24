@@ -26,4 +26,5 @@ urlpatterns = [
     path('', include('posts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),  #added for authentication
     
-]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) #added for static files
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #added for mediafiles
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) #added for static files
