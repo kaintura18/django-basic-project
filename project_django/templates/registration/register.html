@@ -1,11 +1,98 @@
 {%extends "layout.html"%}
 
 {% block content %}
-<h2>Register</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Register</button>
-</form>
+<style>/* Center container */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+/* Card */
+.auth-card {
+    width: 350px;
+    padding: 30px;
+    border-radius: 12px;
+    background: #605858;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Title */
+.auth-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form group */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Inputs */
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+/* Button */
+.regis_btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #4CAF50;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.regis_btn:hover {
+    background: #45a049;
+}
+
+/* Error text */
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+/* Footer */
+.auth-footer {
+    text-align: center;
+    margin-top: 15px;
+}
+</style>
+
+
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>Create Account</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      {% for field in form %}
+        <div class="form-group">
+          <label>{{ field.label }}</label>
+          {{ field }}
+          {% if field.errors %}
+            <small class="error">{{ field.errors.0 }}</small>
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      <button type="submit" class="regis_btn">Register</button>
+    </form>
+
+    <p class="auth-footer">
+      Already have an account? <a href="{% url 'login' %}">Login</a>
+    </p>
+  </div>
+</div>
+
 {% endblock %}
 

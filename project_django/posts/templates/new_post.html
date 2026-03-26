@@ -1,11 +1,6 @@
 {% extends "layout.html" %}
 
-{% block title %}
-   new post
-{% endblock %}
-
-{% block content %}
-  <h1 class="text-center mt-4">Posts</h1>
+  <!-- <h1 class="text-center mt-4">Posts</h1>
   <h3>
     {% if form.instance.pk%}
     Edit Post
@@ -22,5 +17,98 @@
     </form>
     <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
   </h3>
-    
+  -->
+
+{% block title %}
+  New Post
+{% endblock %}
+
+{% block content %}
+<style>
+.post-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.post-card {
+    width: 500px;
+    padding: 25px;
+    background: #1e1e1e;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.post-card h2 {
+    margin-bottom: 20px;
+}
+
+/* Form spacing */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Style Django inputs */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    background: #2b2b2b;
+    color: white;
+}
+
+/* Buttons */
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-primary {
+    background: #4CAF50;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background: #555;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+}
+</style>
+
+<div class="post-container">
+  <div class="post-card">
+    <h2 class="text-center">
+      {% if form.instance.pk %}
+        Edit Post
+      {% else %}
+        Create Post
+      {% endif %}
+    </h2>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form.title }}
+      </div>
+      <div class="form-group">
+        {{ form.content }}
+      </div>
+      <div class="form-group">
+        {{ form.photo }}
+      </div>
+      <div class="post-actions">
+        <a href="{% url 'home' %}" class="btn-secondary">Cancel</a>
+        <button type="submit" class="btn-primary">Post</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 {% endblock %}

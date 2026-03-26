@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'posts',
 ]
 
+AUTH_USER_MODEL = 'posts.CustomUser'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -123,7 +125,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGIN_URL = '/accounts/login/'
+# LOGIN_URL = '/accounts/login/'
 
-LOGIN_REDIRECT_URL = '/'  # or '/posts/' if you keep /posts/ route
-LOGOUT_REDIRECT_URL = '/'  # or '/posts/' if you keep /posts/ route
+# LOGIN_REDIRECT_URL = '/'  # or '/posts/' if you keep /posts/ route
+# LOGOUT_REDIRECT_URL = '/'  # or '/posts/' if you keep /posts/ route

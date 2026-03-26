@@ -28,7 +28,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-        </li>
+        <!-- </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
@@ -45,25 +45,31 @@
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
+        </li> -->
       </ul>
+
       <form method="GET" action="{%url 'home' %}" class="d-flex" role="search">
         <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search" value="{{q}}"/>
         
       </form>
+        <div class="nav-right">
+        {% if user.is_authenticated %} 
+            <img src="{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}/static/default.png{% endif %}" class="avatar">
 
-      
-      {% if user.is_authenticated %}
-      
-          <form method="POST" action="{%url 'logout' %}">
-          {% csrf_token %}
-          <button class="btn btn-danger" type="submit">logout</button>
-        </form>
-      {% else %}
-        <a href="{% url 'login' %}" class="btn btn-danger" type="submit">Login</a>
-        <a href="{% url 'register' %}" class="btn btn-success" type="submit">Register</a>
-      {% endif %}
-
+        <div class="profile-info">
+            <span class="name">{{ user.name|default:user.username }}</span>
+            <span class="handle"><a href="{% url 'user_profile' user.username %}">@{{ user.username }}</a></span>
+        </div>   
+            <form method="POST" action="{%url 'logout' %}">
+              {% csrf_token %}
+              <button class="btn btn-danger" type="submit">Logout</button>
+            </form>
+        
+        {% else %}
+          <a href="{% url 'login' %}" class="btn btn-danger" type="submit">Login</a>
+          <a href="{% url 'register' %}" class="btn btn-success" type="submit">Register</a>
+        {% endif %}
+      </div>
     </div>
   </div>
 </nav>
@@ -71,6 +77,39 @@
   {% block content %}
      content
  {% endblock %}</div>
- 
+
+ <style>
+  .avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.name {
+    font-weight: bold;
+    color: white;
+}
+
+.handle {
+    font-size: 12px;
+    color: #aaa;
+}
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+
+
+/* Name + username */
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+
+  </style>
 </body>
 </html>

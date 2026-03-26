@@ -1,25 +1,41 @@
 from django.shortcuts import render
-from .models import Post , Comments
-from .forms import postforms, UserRegistrationForm , commentForm
+from .models import Post , Comments, CustomUser
+from .forms import postforms, UserRegistrationForm ,UserEditForm, commentForm
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login
+from django.contrib.auth import login ,logout, authenticate
 from django.db.models import Q
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.db.models import Exists, OuterRef
 
 
 def user_profile(request, username):
-    user = get_object_or_404(User, username=username)
+    user = get_object_or_404(CustomUser, username=username)
     posts = Post.objects.filter(author=user).order_by('-created_at')
     comments = Comments.objects.filter(author=user).annotate(
         post_exists=Exists(Post.objects.filter(pk=OuterRef('post_id')))
     ).order_by('-created_at')
+    user_profile_picture = user.profile_picture.url if user.profile_picture else None
     return render(request, 'profile.html', {
         'profile_user': user,
         'posts': posts,
-        'comments': comments
+        'comments': comments,
+        'user_profile_picture': user_profile_picture
     })
+@login_required
+def edit_user(request,username):
+    user = get_object_or_404(CustomUser, username=username)
+    form=UserEditForm(instance=user)
+    if request.method=='POST':
+        form=UserEditForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save(commit=False)
+            form.author=request.user
+            form.save()
+            return redirect('user_profile', username=username)
+    else:
+        form=UserEditForm(instance=user)
+    return render(request, 'edit_profile.html', {'form': form})
 
 
 def home(request):   
@@ -98,7 +114,23 @@ def delete_comment(request, comment_id):
         return redirect('post', post_id=post.id)
     return redirect('post', post_id=post.id)
 
+def login_view(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            error_message = 'Invalid email or password'
+            return render(request, 'registration/login.html', {'error_message': error_message})
+    return render(request, 'registration/login.html')
 
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('home')  
 
 def register(request):
     if request.method=='POST':
