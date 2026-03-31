@@ -1,0 +1,735 @@
+[
+  {
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+      "action_time": "2026-03-26T14:13:57.288Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "1",
+      "object_repr": "aditya@gmail.com",
+      "action_flag": 2,
+      "change_message": [
+        {
+          "changed": {
+            "fields": [
+              "Profile picture"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+      "action_time": "2026-03-26T16:11:57.578Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "1",
+      "object_repr": "aditya@gmail.com",
+      "action_flag": 2,
+      "change_message": [
+        {
+          "changed": {
+            "fields": [
+              "Bio"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 1,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 1,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 1,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": 1,
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 3,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 3,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 3,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can view permission",
+      "content_type": 3,
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 2,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 2,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 2,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can view group",
+      "content_type": 2,
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 4,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 4,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 4,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can view content type",
+      "content_type": 4,
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 5,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 5,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 5,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can view session",
+      "content_type": 5,
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can add user",
+      "content_type": 7,
+      "codename": "add_customuser"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can change user",
+      "content_type": 7,
+      "codename": "change_customuser"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can delete user",
+      "content_type": 7,
+      "codename": "delete_customuser"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can view user",
+      "content_type": 7,
+      "codename": "view_customuser"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add post",
+      "content_type": 8,
+      "codename": "add_post"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change post",
+      "content_type": 8,
+      "codename": "change_post"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete post",
+      "content_type": 8,
+      "codename": "delete_post"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can view post",
+      "content_type": 8,
+      "codename": "view_post"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can add comments",
+      "content_type": 6,
+      "codename": "add_comments"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can change comments",
+      "content_type": 6,
+      "codename": "change_comments"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can delete comments",
+      "content_type": 6,
+      "codename": "delete_comments"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "Can view comments",
+      "content_type": 6,
+      "codename": "view_comments"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+      "name": "Can add comment",
+      "content_type": 9,
+      "codename": "add_comment"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can change comment",
+      "content_type": 9,
+      "codename": "change_comment"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "Can delete comment",
+      "content_type": 9,
+      "codename": "delete_comment"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+      "name": "Can view comment",
+      "content_type": 9,
+      "codename": "view_comment"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+      "app_label": "admin",
+      "model": "logentry"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+      "app_label": "auth",
+      "model": "group"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+      "app_label": "auth",
+      "model": "permission"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+      "app_label": "contenttypes",
+      "model": "contenttype"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+      "app_label": "sessions",
+      "model": "session"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+      "app_label": "posts",
+      "model": "comments"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+      "app_label": "posts",
+      "model": "customuser"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+      "app_label": "posts",
+      "model": "post"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+      "app_label": "posts",
+      "model": "comment"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "qckae9dqh2c065g4ekfi64e66rgjm0th",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSHDq4hL934DGZhBqoYmpV0Z_92QdKHbe865bxFx32rcO69xJnERRpx-t4T5yW0AemC7LzIvbVvnJIciD9rlbSF-XQ_376Bir6NWjriALQjKgPeJEgdPnJFyMOxUPk_FQXC6ZKu1Dx7sVAICsUoGg_h8AQM8OGQ:1w5mKx:JVi0B90JRcAF4woTB5kOzryoL6OoAL9wNYoGdUJxeL8",
+      "expire_date": "2026-04-09T15:09:31.411Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "u03xp4x4ao52f6cvjtv8s93mkoy7up86",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQAP9lz4bwxu3Ru99AlgWlaiAp7cn476ZJD3qdmcwbIm1rjdsoS5wzTGDh9MsS8bO0XeQHtXsX3Nu6zEnsiTjsENeey-tytH-DSqPCBNJqQlSMntE4JpYqsEOZz0r5lBVRuenAxuuE3kntEI33RFblEIpF-HwBy_03GA:1w5qUB:kwMqX2QBB1k-45X6ACNfzBugWHYA2Xnt_jqr48gQqJE",
+      "expire_date": "2026-04-09T19:35:19.560Z"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "uph1fwkgegxh0aoerbbj9g06c8wg3a9v",
+    "fields": {
+      "session_data": ".eJxVjDkOwjAQAP-yNbJir8-U9LzB8rHGAWRLcVIh_o4ipYB2ZjRv8GHfqt8HrX7JMAOHyy-LIT2pHSI_Qrt3lnrb1iWyI2GnHezWM72uZ_s3qGFUmCEpKZ0SzgmTCxIJ1BYLFcGtJM6dCtFYDNnaWIROKCet1IRkUBiTeIHPF8WWNvo:1w7UYu:53k8XiU8gjxYO1LnJ6Vlqq49HV4uw9qnJvK7YL5mJPg",
+      "expire_date": "2026-04-14T08:35:00.506Z"
+    }
+  },
+  {
+    "model": "posts.customuser",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$3h7tshOJ5oEACug88JWE1z$YvdLb0vMMbLJkTdQmltaXEOfAE2ae8yV1AHdYmXfrpc=",
+      "last_login": "2026-03-31T08:35:00.501Z",
+      "is_superuser": true,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-03-26T09:46:16Z",
+      "username": "aditya",
+      "email": "aditya@gmail.com",
+      "bio": "The backward linkage of action",
+      "profile_picture": "profile_pictures/Divine_Krishna_in_Two_Forms.png",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "posts.customuser",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$JPKu6g69CJsfEHMmxRTZda$rFGxCe1G63fFRbgnd4w+AsD7+GoGrQfCzoFHTnuxgks=",
+      "last_login": "2026-03-26T10:28:10.010Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-03-26T10:28:07.790Z",
+      "username": "newuser23",
+      "email": "kaintura.aditya@gmail.com",
+      "bio": null,
+      "profile_picture": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "posts.customuser",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$85y79YscEb1pJ3ypqXoeNh$7PdPJyBJU1f7p0SIXSvznyg+3K4DKesgy3UePSDOYtA=",
+      "last_login": "2026-03-26T15:09:31.406Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-03-26T15:09:29.104Z",
+      "username": "ap",
+      "email": "ap@gmail.com",
+      "bio": null,
+      "profile_picture": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "posts.customuser",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$iwvNRiHCYU4p8MN520uVwD$pYs8L1PF0ifA+l+GyTMqM6iLoGq5KJZ7S+5zt1lfSyc=",
+      "last_login": "2026-03-26T19:35:19.555Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-03-26T19:35:17.192Z",
+      "username": "utkarsh",
+      "email": "papa@gmail.com",
+      "bio": "Comprehensive Account of the Philosophy of Acharya Prashant",
+      "profile_picture": "profile_pictures/Screenshot_2025-07-01_214201.png",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 1,
+    "fields": {
+      "author": 2,
+      "title": "sad",
+      "content": "afafafa",
+      "photo": "",
+      "created_at": "2026-03-26T10:29:57.159Z",
+      "updated_at": "2026-03-26T10:29:57.159Z"
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 2,
+    "fields": {
+      "author": 2,
+      "title": "my photo",
+      "content": "desi        })\r\n🚀 Result\r\n✔️ Proper layout\r\n✔️ Clean spacing\r\n✔️ Styled inputs\r\n✔️ Centered card\r\n✔️ Professional UI\r\n\r\n💡 Next Level (you should do next)\r\nShow image preview before upload\r\n\r\nAdd edit/delete buttons on posts\r\n\r\nCreate post feed UI\r\n\r\nIf you want, I can:\r\n👉 convert your whole app into Instagram-style UI (posts + comments + profile)\r\n👉 or clean your entire CSS structure 👍",
+      "photo": "photos/WhatsApp_Image_2026-02-13_at_9.58.20_PM.jpeg",
+      "created_at": "2026-03-26T10:50:11.384Z",
+      "updated_at": "2026-03-29T16:44:19.705Z"
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 3,
+    "fields": {
+      "author": 1,
+      "title": "consitenscy",
+      "content": "🧠 UX Consistency (important)\r\n\r\nNow your app has:\r\n\r\nPage\tStyle\r\nRegister\tCard UI\r\nLogin\tSame Card UI ✅\r\n\r\n👉 This is how real apps maintain design consistency\r\n\r\n🚀 Next UI Upgrade (recommended)\r\n\r\nYou’re at a good stage — next improvements:\r\n\r\nNavbar with:\r\nLogin / Logout toggle\r\nUser profile pic\r\nFlash messages (success/error alerts)\r\nRedirect after login (?next= handling)\r\n\r\nIf you want, I can:\r\n👉 make a full navbar + auth flow UI (like real app)\r\n👉 OR connect login/register with messages + redirects cleanly 👍",
+      "photo": "",
+      "created_at": "2026-03-26T10:51:57.828Z",
+      "updated_at": "2026-03-26T10:51:57.828Z"
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 4,
+    "fields": {
+      "author": 1,
+      "title": "aa",
+      "content": "adwdwd",
+      "photo": "photos/Screenshot_2025-07-01_214201_IX3H6YD.png",
+      "created_at": "2026-03-26T10:54:28.215Z",
+      "updated_at": "2026-03-26T10:54:28.215Z"
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 5,
+    "fields": {
+      "author": 1,
+      "title": "adadawd",
+      "content": "aadd",
+      "photo": "photos/WhatsApp_Image_2026-02-13_at_9_Hm9LLBj.55.43_PM.jpeg",
+      "created_at": "2026-03-26T10:55:33.000Z",
+      "updated_at": "2026-03-26T10:55:33.000Z"
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 6,
+    "fields": {
+      "author": 1,
+      "title": "AP FRAMEWORK",
+      "content": "A Comprehensive Account of the Philosophy of Acharya Prashant\r\nThis document is a comprehensive exposition of the philosophical framework developed by Acharya Prashant (AP). It serves two audiences simultaneously: the reader who comes to this material for the first time, and the scholar who wishes to examine its internal consistency, methodological commitments, and relationship to established traditions. The document opens with the framework's philosophical architecture — its formal ontological, epistemological, and soteriological commitments — followed by a precise lexicon of core terms. The substantive exposition of the framework occupies the remaining sections.",
+      "photo": "",
+      "created_at": "2026-03-26T11:00:00.726Z",
+      "updated_at": "2026-03-26T11:00:00.726Z"
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 7,
+    "fields": {
+      "author": 1,
+      "title": "AP FRAMEWORK",
+      "content": "The psychological ego — the sense of \"I am my thoughts, my story, my history\" — lends meaning to existence. Objects do not come pre-loaded with significance. The significance is the psychological ego's contribution. Remove it, and the world is not more real; it is simply differently organized.\r\nThe physical ego — the sense of \"I am the creature inside this skin boundary\" — lends shape and geometry to the universe. The three-dimensional structure of experienced reality is not an independent fact about the universe. It corresponds precisely to the three-dimensional geometry of the body doing the perceiving. This is not coincidence. The eyes and ears and proprioceptive system organize reality into the shape that is consistent with housing a body of this kind. Without the physical ego, the universe does not become more real; it loses its current perceptible form entirely.",
+      "photo": "photos/Cycle-of-birth-and-death-web_eC17J9q.jpg",
+      "created_at": "2026-03-26T11:00:24.131Z",
+      "updated_at": "2026-03-26T11:00:24.131Z"
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 8,
+    "fields": {
+      "author": 4,
+      "title": "1. Ontology — What Is Real?",
+      "content": "The AP framework begins its ontology with a question that most philosophical systems skip: for whom? Reality is not a free-standing fact. Reality is always reality as encountered, as perceived, as organized — which means reality is always reality for an ego. The framework does not step outside the ego to describe what exists. It begins where the only honest beginning is: from within the ego itself.\r\nFrom this starting point, the framework makes a precise claim: the only thing the ego can be certain of is its own existence and its own suffering. Not the body — the body's reality is mediated, perceived, interpreted. Not the world — the world's shape, geometry, and perceptibility are functions of the instrument through which it is known. The ego does not encounter a ready-made universe. It participates in producing the universe it encounters.\r\nHere the framework makes a move that distinguishes it from most traditions. It identifies two registers of the ego operating simultaneously:\r\nThe psychological ego — the sense of \"I am my thoughts, my story, my history\" — lends meaning to existence. Objects do not come pre-loaded with significance. The significance is the psychological ego's contribution. Remove it, and the world is not more real; it is simply differently organized.\r\nThe physical ego — the sense of \"I am the creature inside this skin boundary\" — lends shape and geometry to the universe. The three-dimensional structure of experienced reality is not an independent fact about the universe. It corresponds precisely to the three-dimensional geometry of the body doing the perceiving. This is not coincidence. The eyes and ears and proprioceptive system organize reality into the shape that is consistent with housing a body of this kind. Without the physical ego, the universe does not become more real; it loses its current perceptible form entirely.\r\nThis is a radical position. It means the framework cannot simply assert \"the body is real, the universe is real\" as though these are self-standing facts available independently of an ego to certify them. The body's reality is itself the ego's claim. The universe's shape is itself the ego's contribution.\r\nWhat, then, is real for the framework? Only this: the ego's own existence, and the suffering that flows from its fundamental condition of incompleteness. These two — ego-existence and ego-suffering — are the framework's bedrock. They require no external verification because they are self-certifying. The ego does not need proof that it suffers. The suffering is the proof.\r\n\"Reality\" itself is a dualistic concept. It requires a knower and a known — a subject to certify the object. Which means \"reality\" is always already inside the ego-consciousness structure. There is no reality outside of that structure available to a living ego, because stepping outside that structure means the ego is no longer there to report on what it found.\r\nAnd here the framework reaches its most distinctive ontological edge: what lies beyond duality — beyond the ego-object structure — cannot be characterized, because once duality dissolves, no one remains to make the characterization. The framework does not fill this silence with Brahman, with sunyata, with pure awareness, or with any other positive content. It leaves it exactly as it is: a silence that no living ego has ever reported from the inside.\r\nThis makes the AP framework's ontology genuinely singular. It is not idealism — it does not say only mind exists. It is not materialism — it does not say the body is independently real. It is not classical Advaita — it does not posit Brahman as the real behind the apparent. It is not Buddhist sunyata — it does not make emptiness into a positive teaching. It starts from the ego's self-certainty, traces the ego's constitutive role in producing the world it encounters, acknowledges that the question \"what is real beyond the ego?\" cannot be answered by any ego, and stops precisely there — not with a conclusion, but with an honest recognition of the limit.\r\nThe framework offers no consolation on this question. The ego wants to know what remains when it dissolves. The framework's answer is that the question itself is the ego's question, and the ego that dissolves cannot send back a report.",
+      "photo": "",
+      "created_at": "2026-03-26T19:39:51.735Z",
+      "updated_at": "2026-03-26T19:39:51.735Z"
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 9,
+    "fields": {
+      "author": 4,
+      "title": "Epistemology — How Do We Know?",
+      "content": "The Via Negativa as Primary Method\r\nThe framework's primary epistemic method is negation. Truth is not grasped by the ego through positive intellectual apprehension; it is approached by the ego through the progressive dissolution of its own distortions. This is not a counsel of ignorance — it is the recognition that the instrument of knowing (the ego-commandeered mind) is precisely the thing that must be interrogated. You cannot reliably use a distorted lens to examine its own distortion.\r\nThe Ego's Epistemic Unreliability\r\nThe ego is, in this framework, an inherently unreliable judge of its own movement. It is simultaneously the contestant and the referee. When it evaluates whether it is making progress toward freedom, the answer is predetermined: it will find evidence of progress, because finding evidence of progress allows it to continue its current operations without disturbance. This structural unreliability is not a character defect of specific individuals; it is a feature of the ego as such.\r\nSeeing vs. Thinking",
+      "photo": "photos/Screenshot_2026-03-27_011110.png",
+      "created_at": "2026-03-26T19:41:30.668Z",
+      "updated_at": "2026-03-26T19:41:30.668Z"
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 10,
+    "fields": {
+      "author": 4,
+      "title": "THE BODY AND THE UNIVERSE",
+      "content": "Body (as problem) The ego's birthplace and primary substrate. The body arrives in the world with evolutionary baggage: tendencies, fears, desires, and distortions accumulated over millions of years of biological adaptation. The ego arises from the body's physical separateness and subsequently uses the body — its appearance, capacities, pleasures, and pains — to validate and inflate itself.\r\nBody (as instrument) The same body that is the ego's birthplace is, when the ego steps aside, the universe's instrument. The body then operates with a natural intelligence that requires no desire as fuel. This is not mysticism; biological organisms freed from egoic overlay exhibit remarkable wisdom, economy, and responsiveness. The operator, not the operated-upon, is the determining variable.\r\nBrain\r\nDescribed in this framework as the representative of the entire universe within the body. The brain's complexity, its self-organizing capacity, and its deep entanglement with the total environment make it, when freed from egoic commandeering, an expression of the universe's own intelligence operating locally. When the ego commandeers the brain, it harnesses this instrument for the ego's small purposes.\r\nEvolutionary baggage\r\nThe inherited tendencies, fears, and desires that the body carries at birth, prior to the individual ego's formation. These are not chosen by the individual; they are the substrate into which the ego is born. The ego then borrows from and amplifies these inherited patterns, which is why egoic patterns often feel biological, compulsive, and impossible to simply choose away.",
+      "photo": "",
+      "created_at": "2026-03-26T19:45:11.318Z",
+      "updated_at": "2026-03-26T19:45:11.318Z"
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 11,
+    "fields": {
+      "author": 1,
+      "title": "advait difference",
+      "content": "Duality\r\nThe fundamental structure of consciousness as experienced: subject and object, ego and world. In this framework, the duality is ultimately illusory — not because Brahman stands behind it as the real, but because both poles are the ego's operation. The object as-known is already shaped by egoic projection; the subject that knows is the ego. Both ends of the duality are the ego's own construction.\r\nNon-duality\r\nDistinct from classical Advaita non-dualism. The framework does not posit Brahman — a positive non-dual ground — behind the apparent duality. It holds that both ends of the duality are the ego's operation, and deals in absences: when the ego is seen through, what remains is not characterized. Any positive characterization immediately becomes a new egoic object.",
+      "photo": "photos/Screenshot_2026-03-27_011657.png",
+      "created_at": "2026-03-26T19:47:06.963Z",
+      "updated_at": "2026-03-26T19:47:06.963Z"
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 14,
+    "fields": {
+      "author": 3,
+      "title": "consitenscy bye other user using api",
+      "content": "🧠 UX Consistency (important)\r\n\r\nNow your app has:\r\n\r\nPage\tStyle\r\nRegister\tCard UI\r\nLogin\tSame Card UI ✅\r\n\r\n👉 This is how real apps maintain design consistency\r\n\r\n🚀 Next UI Upgrade (recommended)\r\n\r\nYou’re at a good stage — next improvements:\r\n\r\nNavbar with:\r\nLogin / Logout toggle\r\nUser profile pic\r\nFlash messages (success/error alerts)\r\nRedirect after login (?next= handling)\r\n\r\nIf you want, I can:\r\n👉 make a full navbar + auth flow UI (like real app)\r\n👉 OR connect login/register with messages + redirects cleanly 👍",
+      "photo": "",
+      "created_at": "2026-03-27T10:04:15.817Z",
+      "updated_at": "2026-03-27T10:04:15.817Z"
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 15,
+    "fields": {
+      "author": 2,
+      "title": "my photo",
+      "content": "The first divergence is in the diagnosis itself. Madhyamika's doctrine of sunyata holds that all phenomena are empty of svabhava — inherent, self-standing existence. The self is empty in this sense: not non-existent, but lacking the solidity the ego attributes to it, arising dependently through causes, conditions, and conceptual imputation. The AP framework's diagnosis is different in kind. When it calls the ego an error, it does not mean the ego is empty of inherent existence in Nagarjuna's metaphysical sense. It means the ego is a physiological structure — body-based, arising at birth from the skin boundary, carrying evolutionary baggage — that has organized experience around a false centre. This difference in diagnosis produces different consequences for what kind of engagement is required. A cognitively-originating self might in principle dissolve through correct understanding. A physiologically-originating ego cannot — which is why the framework",
+      "photo": "",
+      "created_at": "2026-03-29T15:56:56.873Z",
+      "updated_at": "2026-03-30T10:59:08.709Z"
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 16,
+    "fields": {
+      "author": 2,
+      "title": "consitenscy",
+      "content": "🧠 UX Consistency (important)\r\n\r\nNow your app has:\r\n\r\nPage\tStyle\r\nRegister\tCard UI\r\nLogin\tSame Card UI ✅\r\n\r\n👉 This is how real apps maintain design consistency\r\n\r\n🚀 Next UI Upgrade (recommended)\r\n\r\nYou’re at a good stage — next improvements:\r\n\r\nNavbar with:\r\nLogin / Logout toggle\r\nUser profile pic\r\nFlash messages (success/error alerts)\r\nRedirect after login (?next= handling)\r\n\r\nIf you want, I can:\r\n👉 make a full navbar + auth flow UI (like real app)\r\n👉 OR connect login/register with messages + redirects cleanly 👍",
+      "photo": "",
+      "created_at": "2026-03-30T09:11:41.574Z",
+      "updated_at": "2026-03-30T10:19:49.471Z"
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 17,
+    "fields": {
+      "author": 1,
+      "title": "consitenscy",
+      "content": "🧠 UX Consistency (important)\r\n\r\nNow your app has:\r\n\r\nPage\tStyle\r\nRegister\tCard UI\r\nLogin\tSame Card UI ✅\r\n\r\n👉 This is how real apps maintain design consistency\r\n\r\n🚀 Next UI Upgrade (recommended)\r\n\r\nYou’re at a good stage — next improvements:\r\n\r\nNavbar with:\r\nLogin / Logout toggle\r\nUser profile pic\r\nFlash messages (success/error alerts)\r\nRedirect after login (?next= handling)\r\n\r\nIf you want, I can:\r\n👉 make a full navbar + auth flow UI (like real app)\r\n👉 OR connect login/register with messages + redirects cleanly 👍",
+      "photo": "",
+      "created_at": "2026-03-30T10:17:16.119Z",
+      "updated_at": "2026-03-30T10:17:16.119Z"
+    }
+  },
+  {
+    "model": "posts.comment",
+    "pk": 1,
+    "fields": {
+      "author": 1,
+      "post": 17,
+      "body": "hlelppppppppp",
+      "created_at": "2026-03-31T09:52:08.840Z",
+      "updated_at": "2026-03-31T10:10:28.877Z"
+    }
+  }
+]
