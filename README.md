@@ -1,8 +1,14 @@
 # 🧠 Django Social App
 
 A full-stack Django web application with authentication, user profiles, posts, comments, and a modern UI.
+### 📝 Home Feed
+![Home](screenshots/home.png)
+
+### 👤 Profile Dropdown
+![Profile](screenshots/profile.png)
 
 ---
+
 
 ## 🚀 Features
 
