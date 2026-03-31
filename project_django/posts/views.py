@@ -1,18 +1,20 @@
 from django.shortcuts import render
-from .models import Post , Comments, CustomUser
+from .models import Post , Comment, CustomUser
 from .forms import postforms, UserRegistrationForm ,UserEditForm, commentForm
 from django.shortcuts import get_object_or_404, redirect
+from django.http import HttpResponseForbidden
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login ,logout, authenticate
 from django.db.models import Q
 # from django.contrib.auth.models import User
 from django.db.models import Exists, OuterRef
+from django.core.paginator import Paginator
 
 
 def user_profile(request, username):
     user = get_object_or_404(CustomUser, username=username)
     posts = Post.objects.filter(author=user).order_by('-created_at')
-    comments = Comments.objects.filter(author=user).annotate(
+    comments = Comment.objects.filter(author=user).annotate(
         post_exists=Exists(Post.objects.filter(pk=OuterRef('post_id')))
     ).order_by('-created_at')
     user_profile_picture = user.profile_picture.url if user.profile_picture else None
@@ -25,12 +27,12 @@ def user_profile(request, username):
 @login_required
 def edit_user(request,username):
     user = get_object_or_404(CustomUser, username=username)
+    if user != request.user:
+        return HttpResponseForbidden("You can only edit your own profile.")
     form=UserEditForm(instance=user)
     if request.method=='POST':
         form=UserEditForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
-            form.save(commit=False)
-            form.author=request.user
             form.save()
             return redirect('user_profile', username=username)
     else:
@@ -41,15 +43,19 @@ def edit_user(request,username):
 def home(request):   
     q=request.GET.get('q', '') 
     if q and q.strip():
-        posts = Post.objects.filter(Q(title__icontains=q) | Q(content__icontains=q))
+        posts = Post.objects.select_related('author').filter(Q(title__icontains=q) | Q(content__icontains=q)).order_by('-created_at')
     else:
-        posts = Post.objects.all().order_by('-created_at')    #read data
+        posts = Post.objects.select_related('author').all().order_by('-created_at')    #read data
 
-    comments = Comments.objects.annotate(
+    paginator = Paginator(posts, 10)  # 10 posts per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    comments = Comments.objects.select_related('author').annotate(
         post_exists=Exists(Post.objects.filter(pk=OuterRef('post_id')))
-    ).order_by('-created_at')
+    ).order_by('-created_at')[:5]
     
-    return render(request, 'home.html', {'posts': posts,'q': q, 'comments': comments})
+    return render(request, 'home.html', {'page_obj': page_obj,'q': q, 'comments': comments})
 
 @login_required
 def new_post(request):         #CREATE DATA

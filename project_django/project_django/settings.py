@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'posts',
+    'rest_framework',
 ]
 
 AUTH_USER_MODEL = 'posts.CustomUser'
@@ -114,6 +115,15 @@ USE_I18N = True
 
 USE_TZ = True
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 50
+    
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
@@ -125,7 +135,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# LOGIN_URL = '/accounts/login/'
+LOGIN_URL = '/login/'
 
-# LOGIN_REDIRECT_URL = '/'  # or '/posts/' if you keep /posts/ route
-# LOGOUT_REDIRECT_URL = '/'  # or '/posts/' if you keep /posts/ route
+LOGIN_REDIRECT_URL = '/'  or 'home'  # Redirect to home page after login
+LOGOUT_REDIRECT_URL = '/'  or 'home'  # Redirect to home page after login

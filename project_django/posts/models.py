@@ -21,16 +21,27 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        indexes = [
+            models.Index(fields=['author', '-created_at']),
+        ]
+
     def __str__(self):
         return f"{self.author.username} - {self.title}"
 
-class Comments(models.Model):
+class Comment(models.Model):
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     post=models.ForeignKey(Post , on_delete=models.SET_NULL, null=True)
-    body=models.CharField(max_length=200)
+    body=models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        indexes = [
+            models.Index(fields=['author', '-created_at']),
+            models.Index(fields=['post', '-created_at']),
+        ]
+
     def __str__(self):
-        return f"{self.body[:50]} - {self.author}"
+        return f"{self.body[:50]} - {self.author.username}"
 

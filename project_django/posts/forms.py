@@ -1,8 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm ,UserChangeForm
 # from django.contrib.auth.models import User
-from .models import Post,Comments,CustomUser
-from .models import Post
+from .models import Post,Comment,CustomUser
 
 class postforms(forms.ModelForm):
     class Meta:
@@ -42,5 +41,13 @@ class UserEditForm(forms.ModelForm):
 
 class commentForm(forms.ModelForm):
   class Meta:
-    model = Comments
+    model = Comment
     fields=['body']
+    
+  def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['body'].widget.attrs.update({
+            'class': 'textarea',
+            'placeholder': 'Add a comment...'
+        })

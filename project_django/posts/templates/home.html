@@ -58,7 +58,7 @@
   <div class="posts_section"> 
     <a href="{% url 'new_post' %}" class="btn btn-primary mb-3">Create New Post</a>
     <div class='container row gap-3'>
-      {%for post in posts%}
+      {%for post in page_obj%}
       <div class="post clickable-card"
       onclick="window.location.href='{% url 'post' post.id %}'">
         <div class="card" >
@@ -82,7 +82,7 @@
  </div> 
 <div class="recent_activity">
       <h3 class="text-center">Recent Activity</h3><hr>
-      {% for comment in comments|slice:":5" %}
+      {% for comment in comments %}
         <div class="post-card clickable-card" {% if comment.post_exists %}onclick="window.location.href='{% url 'post' comment.post_id %}'"{% endif %}>
           <div class="comment-meta">
             <small><a href="{% url 'user_profile' comment.author.username %}">@{{ comment.author.username }}</a> • {{ comment.created_at|timesince }} ago
@@ -100,6 +100,24 @@
       {% endfor %}
           
 
+</div>
+
+<div class="pagination mt-4">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1{% if q %}&q={{ q }}{% endif %}" class="btn btn-secondary">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}{% if q %}&q={{ q }}{% endif %}" class="btn btn-secondary">previous</a>
+        {% endif %}
+
+        <span class="current mx-3">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}{% if q %}&q={{ q }}{% endif %}" class="btn btn-secondary">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}{% if q %}&q={{ q }}{% endif %}" class="btn btn-secondary">last &raquo;</a>
+        {% endif %}
+    </span>
 </div>
 
 
