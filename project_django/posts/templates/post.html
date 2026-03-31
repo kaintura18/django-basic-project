@@ -91,6 +91,16 @@
   color: #ff6b6b;
   cursor: pointer;
 }
+
+.edit-btn {
+  color: #4CAF50;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.edit-btn:hover {
+  text-decoration: underline;
+}
 </style>
 
 <div class="post-container">
@@ -140,8 +150,9 @@
         </div>
         <p class="comment-body">{{ comment.body }}</p>
         {% if user == comment.author %}
+          <a href="{% url 'edit_comment' comment.pk %}" class="edit-btn">Edit</a>
           <form action="{% url 'delete_comment' comment.pk %}"
-                method="POST">
+                method="POST" style="display: inline;">
             {% csrf_token %}
             <button class="delete-btn">Delete</button>
           </form>

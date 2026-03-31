@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer,ReadOnlyField
-from posts.models import Post,Comments,CustomUser
+from posts.models import Post,Comment,CustomUser
 
 class SignupSerializer(ModelSerializer):
     class Meta:
@@ -22,7 +22,7 @@ class PostSerializer(ModelSerializer):
 class commentSerializer(ModelSerializer):
   author = ReadOnlyField(source='user.username')
   class Meta:
-    model=Comments
+    model=Comment
     fields='__all__'
 
 class profileSerializer(ModelSerializer):

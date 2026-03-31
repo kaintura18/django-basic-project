@@ -65,10 +65,10 @@
           <div class="card-body">
             <h5 class="card-title">{{ post.title }}</h5>
             <a href="{% url 'user_profile' post.author.username %}">@{{ post.author.username }}</a> 
-            <p class="card-text">{{post.content|truncatewords:20 }}</p>
+            <p class="card-text">{{ post.content|truncatechars:150 }}</p>
             {% if post.photo %}
               <img src="{{ post.photo.url }}" class="card-img-top" alt="no image?"><br>
-            {% endif %}
+            {% endif %}<br>
             {% if post.author == user %}
               <a href="{% url 'edit_post' post.id %}" class="btn btn-primary">Edit </a>
               <a href="{% url 'delete_post' post.id %}" class="btn btn-danger">Delete </a>
@@ -77,6 +77,8 @@
              
         </div>
       </div><hr>
+      {% empty %}
+        <p>No posts found.</p>
       {% endfor %}
     </div>
  </div> 
@@ -123,3 +125,17 @@
 
 
 {% endblock %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.querySelector('input[name="q"]');
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                this.form.submit();
+            }
+        });
+    }
+});
+</script>

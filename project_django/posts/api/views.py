@@ -4,7 +4,7 @@ from rest_framework.viewsets import ModelViewSet,ReadOnlyModelViewSet
 from rest_framework import status ,permissions
 
 from .serializers import PostSerializer,commentSerializer,profileSerializer,SignupSerializer
-from posts.models import Post,Comments,CustomUser
+from posts.models import Post,Comment,CustomUser
 
 from django.shortcuts import get_object_or_404
 from django.http import Http404, JsonResponse
@@ -20,14 +20,14 @@ class postViewSet(ModelViewSet):
       serializer.save(author=self.request.user)
 
 class CommentViewSet(ModelViewSet):
-    queryset = Comments.objects.all()
+    queryset = Comment.objects.all()
     serializer_class = commentSerializer
 
     def get_queryset(self):
       post_id = self.request.query_params.get('post')
       if post_id:
-          return Comments.objects.filter(post_id=post_id)
-      return Comments.objects.all()
+          return Comment.objects.filter(post_id=post_id)
+      return Comment.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)

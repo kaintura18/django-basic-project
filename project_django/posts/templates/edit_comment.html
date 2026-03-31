@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit Comment
+{% endblock %}
+
+{% block content %}
+<style>
+  .auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+/* Card */
+.auth-card {
+    width: 500px;
+    padding: 30px;
+    border-radius: 14px;
+    background: #1e1e1e;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+}
+
+/* Title */
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form spacing */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Inputs */
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    background: #2b2b2b;
+    color: white;
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Button */
+.save-btn-primary {
+    width: 100%;
+    padding: 10px;
+    background: #4CAF50;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+}
+
+.save-btn-primary:hover {
+    background: #308034;
+}
+
+</style>
+<div class="auth-container">
+    <div class="auth-card">
+      <h2 class="title">Edit Comment</h2>
+       
+        <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+          {{ form.body }}
+        </div>
+        <button type="submit" class="save-btn-primary">Update Comment</button>
+        </form>
+       
+    </div>
+</div>
+{% endblock %}
