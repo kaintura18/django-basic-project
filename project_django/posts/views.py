@@ -3,7 +3,7 @@ from .models import Post , Comment, CustomUser
 from .forms import postforms, UserRegistrationForm ,UserEditForm, commentForm
 from django.shortcuts import get_object_or_404, redirect
 from django.http import HttpResponseForbidden
-from django.contrib.auth.decorators import login_required, cache_page
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login ,logout, authenticate
 from django.db.models import Q, Prefetch
 # from django.contrib.auth.models import User NOT USING DEFAULT MODEL
